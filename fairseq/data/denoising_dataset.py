@@ -214,12 +214,11 @@ class DenoisingDataset(FairseqDataset):
         assert source[0] == self.vocab.bos()
         assert source[-1] == self.eos
         return source
-        # this returns the corrent format required by Language_pair_dataset in paradise task
-        # return {
-        #     "id": index,
-        #     "source": source,
-        #     "target": target,
-        # } #TODO: maybe create diff dataclass
+        return {
+            "id": index,
+            "source": source,
+            "target": target,
+        } 
 
     def __len__(self):
         return len(self.dataset)
